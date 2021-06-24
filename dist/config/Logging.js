@@ -1,36 +1,35 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var logging = function () {
-    return new Date().toISOString();
-};
-var infoMessage = function (namespace, message, object) {
-    if (object)
-        console.log("[" + logging() + "] [INFO] [" + namespace + "] [" + message + "]", object);
-    else
-        console.log("[" + logging() + "] [INFO] [" + namespace + "] [" + message + "]");
-};
-var errorMessage = function (namespace, message, object) {
-    if (object)
-        console.error("[" + logging() + "] [ERROR] [" + namespace + "] [" + message + "]", object);
-    else
-        console.error("[" + logging() + "] [ERROR] [" + namespace + "] [" + message + "]");
-};
-var warnMessage = function (namespace, message, object) {
-    if (object)
-        console.warn("[" + logging() + "] [WARN] [" + namespace + "] [" + message + "]", object);
-    else
-        console.warn("[" + logging() + "] [WARN] [" + namespace + "] [" + message + "]");
-};
-var debugMessage = function (namespace, message, object) {
-    if (object)
-        console.debug("[" + logging() + "] [DEBUG] [" + namespace + "] [" + message + "]", object);
-    else
-        console.debug("[" + logging() + "] [DEBUG] [" + namespace + "] [" + message + "]");
-};
-exports.default = {
-    infoMessage: infoMessage,
-    errorMessage: errorMessage,
-    warnMessage: warnMessage,
-    debugMessage: debugMessage
-};
+class Logging {
+    constructor() {
+        this.logging = () => {
+            return new Date().toISOString();
+        };
+        this.infoMessage = (namespace, message, object) => {
+            if (object)
+                console.log(`[${this.logging()}] [INFO] [${namespace}] [${message}]`, object);
+            else
+                console.log(`[${this.logging()}] [INFO] [${namespace}] [${message}]`);
+        };
+        this.errorMessage = (namespace, message, object) => {
+            if (object)
+                console.error(`[${this.logging()}] [ERROR] [${namespace}] [${message}]`, object);
+            else
+                console.error(`[${this.logging()}] [ERROR] [${namespace}] [${message}]`);
+        };
+        this.warnMessage = (namespace, message, object) => {
+            if (object)
+                console.warn(`[${this.logging()}] [WARN] [${namespace}] [${message}]`, object);
+            else
+                console.warn(`[${this.logging()}] [WARN] [${namespace}] [${message}]`);
+        };
+        this.debugMessage = (namespace, message, object) => {
+            if (object)
+                console.debug(`[${this.logging()}] [DEBUG] [${namespace}] [${message}]`, object);
+            else
+                console.debug(`[${this.logging()}] [DEBUG] [${namespace}] [${message}]`);
+        };
+    }
+}
+exports.default = Logging;
 //# sourceMappingURL=Logging.js.map

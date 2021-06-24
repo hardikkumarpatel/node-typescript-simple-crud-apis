@@ -2,8 +2,7 @@ import Logging from '../../config/Logging';
 import { NextFunction, Request, Response } from 'express';
 const logging = new Logging();
 const NAMESPACE = 'WelcomeMessage';
-
-export default class WelcomeMessage {
+export class WelcomeMessage {
     constructor() {}
     welcomeMessage = async (request: Request, response: Response, next: NextFunction) => {
         try {
