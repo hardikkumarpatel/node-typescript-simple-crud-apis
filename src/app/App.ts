@@ -1,13 +1,11 @@
+import { WelcomeMessage } from './common/WelcomeMessage';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import AuthControllerRouter from './routers/AuthControllerRouter';
 import ErrorHandler from './common/ErrorHandler';
 import NoFoundHandler from './common/NoFoundHandler';
-import WelcomeMessage  from './common/WelcomeMessage';
+import UsersRouter from './routers/Users.Router';
 const noFoundHandler = new NoFoundHandler();
-const welcomeMessage = new WelcomeMessage();
-
 const app = express();
 
 app.use(express.json());
@@ -15,8 +13,8 @@ app.use(cors());
 app.use(helmet());
 
 //Routers
-app.use('/customers', AuthControllerRouter);
-//app.use('', welcomeMessage.welcomeMessage);
+app.use('/users', UsersRouter);
+app.use('/', new WelcomeMessage().welcomeMessage);
 
 //Common Middleware
 app.use(ErrorHandler);

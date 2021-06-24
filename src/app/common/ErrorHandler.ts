@@ -5,7 +5,7 @@ const NAMESPACE = 'ErrorHandler';
 
 const ErrorHandler = (error: HttpException, request: Request, response: Response, next: NextFunction) => {
     const status = error.statusCode || error.status || 500;
-    Logging.errorMessage(NAMESPACE, `${request.url} : ${request.method}`, error);
+    new Logging().errorMessage(NAMESPACE, `${request.url} : ${request.method}`, error);
     response.status(status).send(error);
 };
 
